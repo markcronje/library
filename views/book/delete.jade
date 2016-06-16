@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  h2.display-data Delete Book?
+            
+  table.table.table-bordered
+    tr
+      th Property
+      th Value
+        tr
+          td Title
+          td= display(book.title)
+        tr
+          td Author
+          td= display(book.author)
+        tr
+          td Plot
+          td= display(book.plot)
+        tr
+          td Year
+          td= display(book.year)
+
+
+  form#book-form.form-horizontal(action="/books/" + book._id + "/delete", method="POST")
+    .form-actions
+      a.btn.btn-warning(href="/books") Back
+      | 
+      input.btn.btn-danger(type="submit", value="Delete")

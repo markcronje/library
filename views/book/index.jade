@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  h2.display-data All Books
+    a.btn.btn-primary.pull-right(href="/books/create") Create a new Book
+
+  table.table.table-bordered.table-striped
+    tr
+        th Title
+        th Author
+        th Plot
+        th Year
+        th
+
+    each book in books
+      tr
+        td= display(book.title)
+        td= display(book.author)
+        td= display(book.plot)
+        td= display(book.year)
+
+        td
+          a(href="/books/" + book._id + "/detail", title="Detail")
+            i.glyphicon.glyphicon-search
+          | 
+          a(href="/books/" + book._id + "/edit", title="Edit")
+            i.glyphicon.glyphicon-pencil
+          | 
+          a(href="/books/" + book._id + "/delete", title="Delete")
+            i.glyphicon.glyphicon-ban-circle

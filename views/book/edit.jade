@@ -1,0 +1,29 @@
+extends ../layout
+include ../mixins/form-helpers
+
+block content
+  form#book-form(action="/books/" + book._id + "/edit", method="POST", role="form")
+    fieldset
+      legend Edit Book
+
+      .form-group
+        mixin label("title", "Title")
+        mixin text("title", book.title)
+        mixin errorMessage(book, 'title')
+      .form-group
+        mixin label("author", "Author")
+        mixin text("author", book.author)
+        mixin errorMessage(book, 'author')
+      .form-group
+        mixin label("plot", "Plot")
+        mixin text("plot", book.plot)
+        mixin errorMessage(book, 'plot')
+      .form-group
+        mixin label("year", "Year")
+        mixin number("year", book.year)
+        mixin errorMessage(book, 'year')
+
+    .form-actions
+      a.btn.btn-warning(href="/books") Back
+      | 
+      input.btn.btn-primary(type="submit", value="Save")
